@@ -2,38 +2,14 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
 :root {
-  --primary-color: #28a745;
-  --secondary-color: #155724;
-  --accent-color: #ffcc00; /* Added a contrasting color */
-  --gradient-start: #28a745;
-  --gradient-end: #ffcc00;
-  --chat-bg: #e9f5e9;
-  --chat-user: #28a745;
-  --chat-bot: #d4edda;
-}
-
-/* Male Theme Variables */
-body.male {
   --primary-color: #2563eb;
   --secondary-color: #1e40af;
-  --accent-color: #ff5733; /* Added a contrasting color */
+  --accent-color: #ff5733;
   --chat-bg: #f1f5f9;
   --chat-user: #2563eb;
   --chat-bot: #e2e8f0;
   --gradient-start: #2563eb;
   --gradient-end: #ff5733;
-}
-
-/* Female Theme Variables */
-body.female {
-  --primary-color: #d946ef;
-  --secondary-color: #a21caf;
-  --accent-color: #ff69b4; /* Added a contrasting color */
-  --chat-bg: #fdf4ff;
-  --chat-user: #d946ef;
-  --chat-bot: #fae8ff;
-  --gradient-start: #d946ef;
-  --gradient-end: #ff69b4;
 }
 
 body {
@@ -49,7 +25,6 @@ body {
   );
 }
 
-/* Chat specific styles */
 .chat-box-container {
   background: white;
   border-radius: 16px;

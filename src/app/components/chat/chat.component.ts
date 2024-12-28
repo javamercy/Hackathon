@@ -99,7 +99,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   private addBotMessage(text: string, options?: string[]) {
     if (text.startsWith('Harika!')) {
       this.toastr.success(
-        'Roadmap oluşturuldu! Profilinde detayları görebilirsin.',
+        'Hedef çizelgesi oluşturuldu! Profilinde detayları görebilirsin.',
         'Efsane Oldu!'
       );
     }

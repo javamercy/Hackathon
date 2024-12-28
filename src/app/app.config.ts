@@ -1,3 +1,4 @@
+import { provideAnimations } from '@angular/platform-browser/animations';
 import {
   APP_INITIALIZER,
   ApplicationConfig,
@@ -5,29 +6,19 @@ import {
   provideZoneChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideToastr, ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+import { provideToastr } from 'ngx-toastr';
 
 import { routes } from './app.routes';
-import { ThemeService } from './services/theme.service';
-
-export function initializeTheme(themeService: ThemeService) {
-  return () => themeService.initializeTheme();
-}
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideToastr({
-      positionClass: 'toast-bottom-right',
+      positionClass: 'toast-top-right',
+      newestOnTop: true,
+      tapToDismiss: true,
     }),
     provideAnimations(),
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeTheme,
-      deps: [ThemeService],
-      multi: true,
-    },
   ],
 };

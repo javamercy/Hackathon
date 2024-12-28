@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { wizardData } from '../../data/wizard-data';
 import { UserResponse, WizardCategory } from '../models/wizard.model';
-import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-wizard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './wizard.component.html',
   styleUrls: ['./wizard.component.css'],
 })
@@ -19,7 +18,7 @@ export class WizardComponent implements OnInit {
 
   showResults: boolean = false;
 
-  constructor(private router: Router, private themeService: ThemeService) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     // Initialize responses array
@@ -86,15 +85,5 @@ export class WizardComponent implements OnInit {
     return this.getCurrentQuestions().every(
       (_, index) => this.getRating(index) > 0
     );
-  }
-
-  onFemaleBtnClick() {
-    this.themeService.setTheme('female');
-    this.router.navigate(['/chat']);
-  }
-
-  onMaleBtnClick() {
-    this.themeService.setTheme('male');
-    this.router.navigate(['/chat']);
   }
 }

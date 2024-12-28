@@ -56,8 +56,8 @@ export const conversationTree = (botName: string): Step => ({
                           ],
                           nextSteps: [
                             {
-                              text: 'Harika! Hadi o zaman, birlikte bir roadmap oluşturalım. Bu yolculuk, senin için oldukça heyecan verici olacak. 😊',
-                              options: [`👍`],
+                              text: 'Harika! Hadi o zaman, birlikte bir hedef çizelgesi oluşturalım. Bu yolculuk, senin için oldukça heyecan verici olacak. 😊',
+                              options: ['👍', '♥'],
                               nextSteps: [
                                 {
                                   text: `Emre, seninle paylaşmak istediğim harika bir etkinlik var! Gençlik ve Spor Bakanlığı’nın düzenlediği bir hackathon, tam da senin gibi yeteneklerini keşfetmek isteyen gençlere yönelik.`,
@@ -102,7 +102,7 @@ export const conversationTree = (botName: string): Step => ({
                                       nextSteps: [
                                         {
                                           text: `Süper karar, Emre! O zaman hemen başvuralım. Senin için gereken bilgileri dolduruyorum. 😊`,
-                                          options: [`♥️`],
+                                          options: ['🥳', '👍'],
                                           nextSteps: [
                                             {
                                               text: `Başvurun tamamlandı! Şimdi, 27 - 29 Aralık’ta güzel bir süreç seni bekliyor. Mentorlarla tanışacağın ve harika projeler geliştireceğin bu etkinlik, senin için büyük bir adım olacak!`,
