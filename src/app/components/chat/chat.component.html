@@ -1,0 +1,74 @@
+<div class="chat-box-container">
+  <div class="chat-header gradient-bg text-white p-3 rounded-top">
+    <div class="d-flex align-items-center">
+      <div class="robot-avatar">
+        <i class="bi bi-robot"></i>
+      </div>
+      <div class="ms-3">
+        <h5 class="mb-0">TechVision Asistan</h5>
+        <small class="text-white-50">Her zaman yardıma hazır</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-messages p-3" #scrollContainer>
+    <div
+      *ngFor="let message of messages"
+      class="message-wrapper mb-3"
+      [ngClass]="{
+        'user-message': message.sender === 'user',
+        'bot-message': message.sender === 'bot'
+      }"
+    >
+      <div class="message-content">
+        <div class="message-avatar" *ngIf="message.sender === 'bot'">
+          <i class="bi bi-robot"></i>
+        </div>
+        <div class="message-bubble">
+          <div [innerHTML]="message.text"></div>
+          <div *ngIf="message.options" class="message-options mt-2">
+            <button
+              *ngFor="let option of message.options"
+              class="btn btn-outline-primary btn-sm me-2 mb-2"
+              (click)="selectOption(option)"
+            >
+              {{ option }}
+            </button>
+          </div>
+        </div>
+        <div class="message-avatar" *ngIf="message.sender === 'user'">
+          <i class="bi bi-person"></i>
+        </div>
+      </div>
+      <div class="message-time" [class.text-end]="message.sender === 'user'">
+        {{ message.timestamp | date : "shortTime" }}
+      </div>
+    </div>
+
+    <div *ngIf="isTyping" class="typing-indicator">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+
+  <div class="chat-input-container p-3 border-top">
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Mesajınızı yazın..."
+        [(ngModel)]="newMessage"
+        (keyup.enter)="sendMessage()"
+        [disabled]="isTyping"
+      />
+      <button
+        class="btn btn-primary"
+        (click)="sendMessage()"
+        [disabled]="!newMessage.trim() || isTyping"
+      >
+        <i class="bi bi-send"></i>
+      </button>
+    </div>
+  </div>
+</div>

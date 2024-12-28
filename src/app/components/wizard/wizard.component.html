@@ -1,0 +1,86 @@
+<div
+  class="wizard-container min-vh-100 d-flex align-items-center justify-content-center gradient-bg"
+>
+  <div class="container">
+    <div class="text-center text-white mb-5">
+      <h1 class="display-4 fw-bold">Kariyer Yolculuğunuza Hoş Geldiniz</h1>
+      <p class="lead">Sizin için en uygun kariyer yolunu belirleyelim</p>
+    </div>
+
+    <div class="card shadow-lg mx-auto" style="max-width: 900px">
+      <div class="card-body p-4">
+        <div class="wizard-progress mb-4">
+          <div class="d-flex justify-content-between mb-2">
+            <div
+              *ngFor="let category of wizardData; let i = index"
+              class="progress-step"
+              [class.active]="i === currentCategory"
+              [class.completed]="i < currentCategory"
+            >
+              <div class="step-number">{{ i + 1 }}</div>
+              <div class="step-title">{{ category.title }}</div>
+            </div>
+          </div>
+          <div class="progress" style="height: 4px">
+            <div
+              class="progress-bar"
+              [style.width]="
+                ((currentCategory + 1) / wizardData.length) * 100 + '%'
+              "
+            ></div>
+          </div>
+        </div>
+
+        <div class="questions-container">
+          <h2 class="text-center mb-4">{{ getCurrentTitle() }}</h2>
+
+          <div class="d-flex flex-column gap-5">
+            <div
+              *ngFor="let question of getCurrentQuestions(); let i = index"
+              class="question-item d-block"
+            >
+              <h5 class="question-text mb-3">{{ question }}</h5>
+              <div class="rating-container">
+                <span class="rating-label">KATILMIYORUM</span>
+                <div class="rating-buttons">
+                  <ng-container *ngFor="let rating of [1, 2, 3, 4, 5]">
+                    <button
+                      class="rating-circle"
+                      [class.active]="getRating(i) === rating"
+                      (click)="setRating(i, rating)"
+                    >
+                      {{ rating }}
+                    </button>
+                  </ng-container>
+                </div>
+                <span class="rating-label">KATILIYORUM</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between mt-4">
+            <button
+              class="btn btn-outline-primary"
+              *ngIf="currentCategory > 0"
+              (click)="previousCategory()"
+            >
+              <i class="bi bi-arrow-left me-2"></i>Geri
+            </button>
+            <button
+              class="btn btn-primary ms-auto"
+              (click)="nextCategory()"
+              [disabled]="!canGoNext()"
+            >
+              {{ isLastCategory() ? "Tamamla" : "İleri" }}
+              <i
+                class="bi"
+                [class.bi-arrow-right]="!isLastCategory()"
+                [class.bi-check-lg]="isLastCategory()"
+              ></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
