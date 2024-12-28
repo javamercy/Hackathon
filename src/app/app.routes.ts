@@ -6,10 +6,12 @@ import { BlogDetailComponent } from './components/blog-detail/blog-detail.compon
 import { ForumComponent } from './components/forum/forum.component';
 import { ForumThreadComponent } from './components/forum-thread/forum-thread.component';
 import { CreateThreadComponent } from './components/create-thread/create-thread.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [];
 
-routes.push({ path: '', component: WizardComponent });
+routes.push({ path: '', component: DashboardComponent });
+routes.push({ path: 'wizard', component: WizardComponent });
 routes.push({ path: 'chat', component: ChatComponent });
 routes.push({ path: 'blogs', component: BlogComponent });
 routes.push({ path: 'blogs/:id', component: BlogDetailComponent });

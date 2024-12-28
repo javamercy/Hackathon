@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { conversationTree } from '../../data/conversation-tree';
 import { Step } from '../models/step.model';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 interface ChatMessage {
   text: string;
@@ -20,7 +21,7 @@ interface ChatMessage {
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ToastrModule],
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css'],
 })
@@ -29,13 +30,12 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   messages: ChatMessage[] = [];
   newMessage: string = '';
-  botName: string;
+  botName: string = 'Fikret';
   isTyping = false;
   currentStep: Step;
 
+  constructor(private toastr: ToastrService) {}
   ngOnInit() {
-    this.botName =
-      localStorage.getItem('theme') == 'male' ? 'Fikret' : 'Kıvılcım';
     this.currentStep = conversationTree(this.botName);
     this.sendWelcomeMessage();
   }
@@ -69,7 +69,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
       this.isTyping = true;
       setTimeout(() => {
-        const response = this.handleOptionSelection(this.currentStep.options[0]);
+        const response = this.handleOptionSelection(
+          this.currentStep.options[0]
+        );
         this.addBotMessage(
           response.text,
           this.shuffleOptions(response.options)
@@ -95,6 +97,20 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   private addBotMessage(text: string, options?: string[]) {
+    if (text.startsWith('Harika!')) {
+      this.toastr.success(
+        'Roadmap oluşturuldu! Profilinde detayları görebilirsin.',
+        'Efsane Oldu!'
+      );
+    }
+
+    if (text.startsWith('Başvurun tamamlandı!')) {
+      this.toastr.success(
+        'Başvurun tamamlandı! Müthiş bir etkinlik seni bekliyor!',
+        'Harika!'
+      );
+    }
+
     this.messages.push({
       text,
       sender: 'bot',
@@ -115,7 +131,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     text: string;
     options?: string[];
   } {
-    debugger;
     if (this.currentStep.nextSteps && this.currentStep.nextSteps[0]) {
       this.currentStep = this.currentStep.nextSteps[0];
       return {
@@ -123,6 +138,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         options: this.currentStep.options,
       };
     }
+
     return {
       text: 'Size nasıl yardımcı olabilirim?',
       options: ['Bilgi Al', 'Destek', 'Diğer'],

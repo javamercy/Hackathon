@@ -1,14 +1,9 @@
 <div class="row justify-content-center">
   <div class="col-md-8">
     <div
-      class="wizard-container min-vh-100 d-flex align-items-center justify-content-center gradient-bg rounded-4 p-3"
+      class="wizard-container min-vh-100 d-flex justify-content-center p-3 fs-5"
     >
       <div class="container" *ngIf="!showResults">
-        <div class="text-center text-white mb-5">
-          <h1 class="fw-bold">Kariyer Yolculuğunuza Hoş Geldiniz</h1>
-          <p class="lead">Sizin için en uygun kariyer yolunu belirleyelim</p>
-        </div>
-
         <div class="card shadow-lg mx-auto" style="max-width: 900px">
           <div class="card-body p-4">
             <div class="wizard-progress mb-4">
@@ -34,8 +29,6 @@
             </div>
 
             <div class="questions-container">
-              <h2 class="text-center mb-4">{{ getCurrentTitle() }}</h2>
-
               <div class="d-flex flex-column gap-3">
                 <div
                   *ngFor="let question of getCurrentQuestions(); let i = index"
@@ -129,20 +122,14 @@
               </p>
             </div>
           </div>
-          <div class="d-flex justify-content-center gap-5">
-            <button
-              class="btn special-btn-female mt-4"
-              (click)="onFemaleBtnClick()"
-            >
-              Kıvılcım ile Görüş!
-            </button>
-            <button
-              class="btn special-btn-male mt-4"
-              (click)="onMaleBtnClick()"
-            >
-              Fikret'e Danış!
-            </button>
-          </div>
+
+          <button
+            class="btn btn-secondary btn-lg w-50 d-inline-flex gap-3 align-items-center justify-content-center"
+            (click)="onMaleBtnClick()"
+          >
+            <i class="bi bi-robot" style="font-size: 2em"></i>
+            Fikret'e Danış!
+          </button>
         </div>
       </div>
     </div>

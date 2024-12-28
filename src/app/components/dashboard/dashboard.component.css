@@ -1,0 +1,11 @@
+.dashboard-container {
+  height: calc(100vh - 200px);
+}
+
+.dashboard-content {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color)
+  );
+}

@@ -68,6 +68,8 @@ export class WizardComponent implements OnInit {
       localStorage.setItem('wizardResponses', JSON.stringify(this.responses));
       this.showResults = true;
     }
+
+    document.body.scrollTop = 0;
   }
 
   previousCategory() {

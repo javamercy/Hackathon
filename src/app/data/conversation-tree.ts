@@ -1,6 +1,6 @@
 import { Step } from '../components/models/step.model';
 
-export const conversationTree = (botName: string):  Step => ({
+export const conversationTree = (botName: string): Step => ({
   text: `Merhaba Emre! Ben ${botName}, senin rehberin. Az önce doldurduğun testi inceledim. Biraz seninle sohbet etmek istiyorum. Hangi alanda ilerlemek istediğin konusunda kafan net mi?`,
   options: [
     'Hayır, tam olarak değil.',
@@ -57,6 +57,63 @@ export const conversationTree = (botName: string):  Step => ({
                           nextSteps: [
                             {
                               text: 'Harika! Hadi o zaman, birlikte bir roadmap oluşturalım. Bu yolculuk, senin için oldukça heyecan verici olacak. 😊',
+                              options: [`👍`],
+                              nextSteps: [
+                                {
+                                  text: `Emre, seninle paylaşmak istediğim harika bir etkinlik var! Gençlik ve Spor Bakanlığı’nın düzenlediği bir hackathon, tam da senin gibi yeteneklerini keşfetmek isteyen gençlere yönelik.`,
+                                  options: [
+                                    'Evet, dinlemek isterim!',
+                                    'Belki sonra...',
+                                    'Şu an ilgilenmiyorum.',
+                                  ],
+                                  nextSteps: [
+                                    {
+                                      text: `<div class="card bg-light p-3">
+  <p><strong>Süper! Etkinliğin detayları şöyle:</strong></p>
+  <ul>
+    <li><strong>Etkinlik:</strong> Gençlik Bilgilendirme Servisi Hackathonu</li>
+    <li><strong>Tarih:</strong> 27-29 Aralık 2024</li>
+    <li><strong>Yer:</strong> İstanbul Ataköy Uluslararası Gençlik Merkezi</li>
+    <li>
+      <strong>Link:</strong>
+      <a
+        href="https://genclikhizmetleri.gov.tr/uluslararasi-genclik-bilgilendirme-servisi-zirvesi-ve-hackathonu-basliyor-genc-fikirler-istanbulda-bulusuyor/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Hackathon Başvuru Sayfası
+      </a>
+    </li>
+  </ul>
+  <p>
+    Bu etkinlik, yazılım kariyerine başlamak için eşsiz bir fırsat olabilir.
+    Mentorlarla tanışabilir, ekiplerle çalışabilir ve kendini geliştirme şansı
+    bulabilirsin. Hatta bu süreçte seninle aynı tutkuyu paylaşan insanlarla
+    tanışabilirsin! <strong>Katılmak ister misin?</strong>
+  </p>
+</div>
+
+                                Bu etkinlik, yazılım kariyerine başlamak için eşsiz bir fırsat olabilir. Mentorlarla tanışabilir, ekiplerle çalışabilir ve kendini geliştirme şansı bulabilirsin. Hatta bu süreçte seninle aynı tutkuyu paylaşan insanlarla tanışabilirsin! Katılmak ister misin?`,
+                                      options: [
+                                        'Evet, harika bir fırsat. Başvuralım!',
+                                        'Emin değilim, biraz daha düşünmek istiyorum.',
+                                        'Hayır, bu seferlik katılmayacağım.',
+                                      ],
+                                      nextSteps: [
+                                        {
+                                          text: `Süper karar, Emre! O zaman hemen başvuralım. Senin için gereken bilgileri dolduruyorum. 😊`,
+                                          options: [`♥️`],
+                                          nextSteps: [
+                                            {
+                                              text: `Başvurun tamamlandı! Şimdi, 27 - 29 Aralık’ta güzel bir süreç seni bekliyor. Mentorlarla tanışacağın ve harika projeler geliştireceğin bu etkinlik, senin için büyük bir adım olacak!`,
+                                            },
+                                          ],
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                },
+                              ],
                             },
                           ],
                         },
@@ -68,18 +125,6 @@ export const conversationTree = (botName: string):  Step => ({
             },
           ],
         },
-      ],
-    },
-    {
-      text: 'Kararsızlık normaldir. Hangi konular seni daha çok heyecanlandırıyor?',
-      options: ['Bilimsel araştırmalar', 'Teknik projeler', 'Yaratıcı işler'],
-    },
-    {
-      text: 'Hiç sorun değil. Hangi aktivitelerden daha çok keyif alıyorsun?',
-      options: [
-        'Kitap okumak',
-        'Teknolojik aletlerle uğraşmak',
-        'Sanatsal aktiviteler',
       ],
     },
   ],

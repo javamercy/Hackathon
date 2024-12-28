@@ -8,15 +8,12 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Hackathon';
 
-  isChatPage: boolean = false;
+  constructor() {}
 
-  constructor(private router: Router) {}
-  ngOnInit() {
-    this.router.events.subscribe((val) => {
-      this.isChatPage = this.router.url.includes('chat');
-    });
+  getRouterLink() {
+    return localStorage.getItem('wizardResponses') ? '/chat' : '/';
   }
 }
