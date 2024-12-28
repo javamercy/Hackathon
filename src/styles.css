@@ -2,9 +2,38 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
 :root {
-  --primary-color: #6c63ff;
-  --secondary-color: #2f2e41;
-  --accent-color: #00bfa6;
+  --primary-color: #28a745;
+  --secondary-color: #155724;
+  --accent-color: #ffcc00; /* Added a contrasting color */
+  --gradient-start: #28a745;
+  --gradient-end: #ffcc00;
+  --chat-bg: #e9f5e9;
+  --chat-user: #28a745;
+  --chat-bot: #d4edda;
+}
+
+/* Male Theme Variables */
+body.male {
+  --primary-color: #2563eb;
+  --secondary-color: #1e40af;
+  --accent-color: #ff5733; /* Added a contrasting color */
+  --chat-bg: #f1f5f9;
+  --chat-user: #2563eb;
+  --chat-bot: #e2e8f0;
+  --gradient-start: #2563eb;
+  --gradient-end: #ff5733;
+}
+
+/* Female Theme Variables */
+body.female {
+  --primary-color: #d946ef;
+  --secondary-color: #a21caf;
+  --accent-color: #ff69b4; /* Added a contrasting color */
+  --chat-bg: #fdf4ff;
+  --chat-user: #d946ef;
+  --chat-bot: #fae8ff;
+  --gradient-start: #d946ef;
+  --gradient-end: #ff69b4;
 }
 
 body {
@@ -15,9 +44,115 @@ body {
 .gradient-bg {
   background: linear-gradient(
     135deg,
-    var(--primary-color),
-    var(--accent-color)
+    var(--gradient-start),
+    var(--gradient-end)
   );
+}
+
+/* Chat specific styles */
+.chat-box-container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.message-bubble.user {
+  background: var(--chat-user);
+  color: white;
+}
+
+.message-bubble.bot {
+  background: var(--chat-bot);
+  color: var(--secondary-color);
+}
+
+.chat-option-button {
+  background: var(--chat-bg);
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin: 4px;
+  transition: all 0.3s ease;
+}
+
+.chat-option-button:hover {
+  background: var(--primary-color);
+  color: white;
+}
+.special-btn-male {
+  background-color: #2563eb;
+  color: white;
+  border: 2px solid #2563eb;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.special-btn-male:hover {
+  background-color: white;
+  color: #2563eb;
+}
+
+.special-btn-female {
+  background-color: #d946ef;
+  color: white;
+  border: 2px solid #d946ef;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.special-btn-female:hover {
+  background-color: white;
+  color: #d946ef;
+}
+
+/* Bootstrap button overrides */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+  color: white;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.btn-outline-secondary {
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus,
+.btn-outline-secondary:active {
+  color: white;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
 }
 
 /* Animations */

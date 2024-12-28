@@ -6,4 +6,4 @@ import { WizardComponent } from './components/wizard/wizard.component';
 export const routes: Routes = [];
 
 routes.push({ path: '', component: WizardComponent });
-routes.push({ path: 'main', component: ChatComponent });
+routes.push({ path: 'chat', component: ChatComponent });

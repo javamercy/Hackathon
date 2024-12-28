@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { trigger, transition, style, animate } from '@angular/animations';
 import { wizardData } from '../../data/wizard-data';
-import { WizardQuestion, UserResponse } from '../models/wizard-model';
+import { UserResponse, WizardCategory } from '../models/wizard-model';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-wizard',
@@ -13,16 +13,18 @@ import { WizardQuestion, UserResponse } from '../models/wizard-model';
   styleUrls: ['./wizard.component.css'],
 })
 export class WizardComponent implements OnInit {
-  wizardData: WizardQuestion[] = wizardData;
+  wizardData: WizardCategory[] = wizardData;
   currentCategory = 0;
   responses: UserResponse[] = [];
 
-  constructor(private router: Router) {}
+  showResults: boolean = false;
+
+  constructor(private router: Router, private themeService: ThemeService) {}
 
   ngOnInit() {
     // Initialize responses array
     this.wizardData.forEach((category, categoryIndex) => {
-      category.questions.forEach((_, questionIndex) => {
+      category.questions.forEach((_: any, questionIndex: any) => {
         this.responses.push({
           categoryIndex,
           questionIndex,
@@ -62,9 +64,9 @@ export class WizardComponent implements OnInit {
     if (this.currentCategory < this.wizardData.length - 1) {
       this.currentCategory++;
     } else {
-      // Store responses and navigate to results
+      // Store responses and show the result wizard which is gonna have two options : Redirect to chatbot with "Kıvılcım" for females and "Fikret" for males.
       localStorage.setItem('wizardResponses', JSON.stringify(this.responses));
-      this.router.navigate(['/main']);
+      this.showResults = true;
     }
   }
 
@@ -82,5 +84,15 @@ export class WizardComponent implements OnInit {
     return this.getCurrentQuestions().every(
       (_, index) => this.getRating(index) > 0
     );
+  }
+
+  onFemaleBtnClick() {
+    this.themeService.setTheme('female');
+    this.router.navigate(['/chat']);
+  }
+
+  onMaleBtnClick() {
+    this.themeService.setTheme('male');
+    this.router.navigate(['/chat']);
   }
 }

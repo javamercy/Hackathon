@@ -1,9 +1,9 @@
 <div
-  class="wizard-container min-vh-100 d-flex align-items-center justify-content-center gradient-bg"
+  class="wizard-container min-vh-100 d-flex align-items-center justify-content-center gradient-bg rounded-4 p-3"
 >
-  <div class="container">
+  <div class="container" *ngIf="!showResults">
     <div class="text-center text-white mb-5">
-      <h1 class="display-4 fw-bold">Kariyer Yolculuğunuza Hoş Geldiniz</h1>
+      <h1 class="fw-bold">Kariyer Yolculuğunuza Hoş Geldiniz</h1>
       <p class="lead">Sizin için en uygun kariyer yolunu belirleyelim</p>
     </div>
 
@@ -34,7 +34,7 @@
         <div class="questions-container">
           <h2 class="text-center mb-4">{{ getCurrentTitle() }}</h2>
 
-          <div class="d-flex flex-column gap-5">
+          <div class="d-flex flex-column gap-3">
             <div
               *ngFor="let question of getCurrentQuestions(); let i = index"
               class="question-item d-block"
@@ -80,6 +80,58 @@
             </button>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showResults">
+    <div class="text-center text-white fadeIn results-container">
+      <h2 class="mb-3 fw-bold fs-2">Gerçekçi & Araştırmacı</h2>
+      <div class="text-start mb-4">
+        <div class="result-section d-flex align-items-center mb-3">
+          <img src="research.png" alt="Araştırmacı" class="result-icon me-3" />
+          <p class="mb-0">
+            <span class="fw-bold">Araştırmacı:</span> Analitik düşünmeyi,
+            detaylı araştırmalar yapmayı ve problemlere derinlemesine dalmayı
+            seviyorsun. Bilimsel konular, teorik projeler ve veri analizi seni
+            heyecanlandırıyor. Yeni şeyler öğrenmek senin için bir yaşam tarzı!
+          </p>
+        </div>
+        <div class="result-section d-flex align-items-center mb-3">
+          <img
+            src="tool-box.png"
+            alt="Pratik Uygulamacı"
+            class="result-icon me-3"
+          />
+          <p class="mb-0">
+            <span class="fw-bold">Pratik Uygulamacı:</span> El becerisi
+            gerektiren işler, uygulamalı projeler ve problem çözme odaklı
+            görevlerde kendini rahat hissediyorsun. Sahada veya teknik
+            projelerde aktif rol almayı seviyorsun.
+          </p>
+        </div>
+      </div>
+      <div class="final-result-section text-start mb-4">
+        <div class="result-section d-flex align-items-center mb-3">
+          <img src="results.png" alt="Teknoloji" class="result-icon me-3" />
+          <p class="mb-0">
+            <span class="fw-bold">Genel Değerlendirme:</span> Bu profil, seni
+            bilimsel, teknik ve uygulamalı alanlara yönlendiriyor. Özellikle
+            veri analizi, mühendislik, AR-GE çalışmaları ve yazılım geliştirme
+            gibi konularda potansiyelin yüksek.
+          </p>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center gap-5">
+        <button
+          class="btn special-btn-female mt-4"
+          (click)="onFemaleBtnClick()"
+        >
+          Kıvılcım ile Görüş!
+        </button>
+        <button class="btn special-btn-male mt-4" (click)="onMaleBtnClick()">
+          Fikret'e Danış!
+        </button>
       </div>
     </div>
   </div>
