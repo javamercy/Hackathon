@@ -1,0 +1,29 @@
+<!-- src/app/components/forum-list/forum-list.component.html -->
+<div class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Kariyer Gelişim Forumu</h2>
+    <a routerLink="/create-thread" class="btn btn-primary" routerLink="/create-thread">Yeni Konu Oluştur</a>
+  </div>
+  <table class="table table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Konu Başlığı</th>
+        <th scope="col">Yazar</th>
+        <th scope="col">Yanıtlar</th>
+        <th scope="col">Son Aktivite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let thread of threads"
+        (click)="viewThread(thread.id)"
+        style="cursor: pointer"
+      >
+        <td>{{ thread.title }}</td>
+        <td>{{ thread.author }}</td>
+        <td>{{ thread.numberOfPosts }}</td>
+        <td>{{ thread.lastPostDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

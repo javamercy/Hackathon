@@ -1,0 +1,47 @@
+<!-- src/app/components/forum-thread/forum-thread.component.html -->
+<div class="container my-5" *ngIf="thread">
+  <h2>{{ thread.title }}</h2>
+  <p class="text-muted">{{ thread.author }} | {{ thread.dateCreated }}</p>
+  <hr />
+  <div class="list-group">
+    <div class="list-group-item" *ngFor="let post of posts">
+      <h5>
+        {{ post.author }}
+        <i
+          *ngIf="post.isTrusted"
+          class="bi bi-patch-check-fill text-primary"
+          title="Doğrulanmış Kullanıcı"
+        ></i>
+        <small class="text-muted"> | {{ post.datePosted }}</small>
+      </h5>
+      <p>{{ post.content }}</p>
+    </div>
+  </div>
+  <hr />
+  <h4>Cevap Yazın</h4>
+  <form (ngSubmit)="addPost()">
+    <div class="mb-3">
+      <label for="authorName" class="form-label">Adınız</label>
+      <input
+        type="text"
+        id="authorName"
+        class="form-control"
+        [(ngModel)]="authorName"
+        name="authorName"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="postContent" class="form-label">Yanıtınız</label>
+      <textarea
+        id="postContent"
+        class="form-control"
+        rows="4"
+        [(ngModel)]="newPostContent"
+        name="postContent"
+        required
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Yanıtı Gönder</button>
+  </form>
+</div>

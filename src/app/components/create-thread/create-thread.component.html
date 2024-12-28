@@ -1,0 +1,40 @@
+<!-- src/app/components/create-thread/create-thread.component.html -->
+<div class="container my-5">
+  <h2 class="text-center mb-5">Yeni Konu Oluştur</h2>
+  <form (ngSubmit)="createThread()">
+    <div class="mb-3">
+      <label for="threadTitle" class="form-label">Konu Başlığı</label>
+      <input
+        type="text"
+        id="threadTitle"
+        class="form-control"
+        [(ngModel)]="title"
+        name="threadTitle"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="authorName" class="form-label">Adınız</label>
+      <input
+        type="text"
+        id="authorName"
+        class="form-control"
+        [(ngModel)]="author"
+        name="authorName"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="threadContent" class="form-label">İlk Yanıtınız</label>
+      <textarea
+        id="threadContent"
+        class="form-control"
+        rows="5"
+        [(ngModel)]="content"
+        name="threadContent"
+        required
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary"(click)="createThread()">Konu Oluştur</button>
+  </form>
+</div>

@@ -15,13 +15,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#features">Özellikler</a>
+            <a class="nav-link" routerLink="/blogs">Yazılar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#about">Hakkımızda</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">İletişim</a>
+            <a class="nav-link" routerLink="/forum">Forum</a>
           </li>
         </ul>
       </div>
@@ -30,7 +27,7 @@
 
   <div class="container py-5">
     <div class="row justify-content-center">
-      <div class="col-lg-8">
+      <div class="col-12" [class.col-md-8]="isChatPage">
         <router-outlet></router-outlet>
       </div>
     </div>

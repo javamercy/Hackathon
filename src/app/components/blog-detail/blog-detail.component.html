@@ -1,0 +1,29 @@
+<!-- src/app/components/blog-detail/blog-detail.component.html -->
+<div class="container my-5" *ngIf="blog">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <img
+          [src]="blog.imageUrl"
+          class="card-img-top"
+          [alt]="blog.title"
+          style="height: 400px; object-fit: cover"
+        />
+        <div class="card-body">
+          <h2 class="card-title text-success">{{ blog.title }}</h2>
+          <p class="text-muted">
+            {{ blog.author || "Bilinmiyor" }}, {{ blog.date }}
+          </p>
+          <p class="card-text blog-summary">{{ blog.summary }}</p>
+          <a [href]="blog.url" target="_blank" class="btn btn-primary"
+            >Hepsini Oku</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5" *ngIf="!blog">
+  <div class="alert alert-danger" role="alert">Yazı bulunamadı!</div>
+</div>
