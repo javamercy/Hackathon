@@ -69,7 +69,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
       this.isTyping = true;
       setTimeout(() => {
-        const response = this.generateResponse();
+        const response = this.handleOptionSelection(this.currentStep.options[0]);
         this.addBotMessage(
           response.text,
           this.shuffleOptions(response.options)

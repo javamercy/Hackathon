@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-forum-thread',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './forum-thread.component.html',
   styleUrl: './forum-thread.component.css',
 })
@@ -39,7 +39,7 @@ export class ForumThreadComponent {
         threadId: this.thread.id,
         author: this.authorName,
         content: this.newPostContent,
-        datePosted: new Date().toISOString().split('T')[0],
+        datePosted: new Date().toLocaleDateString(),
         isTrusted: this.forumService.isUserTrusted(this.authorName),
       };
       this.forumService.addPost(newPost);

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { wizardData } from '../../data/wizard-data';
-import { UserResponse, WizardCategory } from '../models/wizard-model';
+import { UserResponse, WizardCategory } from '../models/wizard.model';
 import { ThemeService } from '../../services/theme.service';
 
 @Component({
