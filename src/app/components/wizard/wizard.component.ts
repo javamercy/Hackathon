@@ -17,6 +17,7 @@ export class WizardComponent implements OnInit {
   responses: UserResponse[] = [];
 
   showResults: boolean = false;
+  showConfetti: boolean = false;
 
   constructor(private router: Router) {}
 
@@ -66,6 +67,11 @@ export class WizardComponent implements OnInit {
       // Store responses and show the result wizard which is gonna have two options : Redirect to chatbot with "Kıvılcım" for females and "Fikret" for males.
       localStorage.setItem('wizardResponses', JSON.stringify(this.responses));
       this.showResults = true;
+      this.showConfetti = true;
+
+      setTimeout(() => {
+        this.showConfetti = false;
+      }, 3000);
     }
 
     document.body.scrollTop = 0;
